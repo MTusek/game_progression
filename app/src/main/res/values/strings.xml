@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GameProgression</string>
+    <string name="game_cover">GameCover</string>
 </resources>
