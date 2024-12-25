@@ -15,7 +15,7 @@ public class GameDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_details);
 
         String gameName = getIntent().getStringExtra("gameName");
-        int gameCover = getIntent().getIntExtra("gameCover", R.drawable.placeholder_cover);
+        int gameCover = getIntent().getIntExtra("gameCover", R.drawable.placeholder);
 
         TextView gameTitle = findViewById(R.id.gameTitle);
         ImageView gameCoverImage = findViewById(R.id.gameCover);
