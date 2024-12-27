@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_main) {
+                return true;
+            } else if (itemId == R.id.nav_notes) {
+                startActivity(new Intent(this, NotesActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_profile) {
+                startActivity(new Intent(this, ProfileActivity.class));
+                return true;
+            }
+            return false;
+        });
+        if (this instanceof MainActivity) {
+            bottomNavigationView.setSelectedItemId(R.id.nav_main);
+        }
 
         // Lista videoigri
 
@@ -29,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
         games.add(new Game("Minecraft",R.drawable.minecraft_cover));
         games.add(new Game("Simple MMO", R.drawable.smmo_cover));
         games.add(new Game("Warframe: 1999", R.drawable.warframe_cover));
-
         //games.add(new Game("Hollow Knight", R.drawable.hollow_knight_cover));
-       // games.add(new Game("Elden Ring", R.drawable.elden_ring_cover));
+        // games.add(new Game("Elden Ring", R.drawable.elden_ring_cover));
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         GameAdapter adapter = new GameAdapter(games, game -> {
