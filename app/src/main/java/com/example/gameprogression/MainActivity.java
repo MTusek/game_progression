@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         games.add(new Game("Minecraft",R.drawable.minecraft_cover));
         games.add(new Game("Simple MMO", R.drawable.smmo_cover));
         games.add(new Game("Warframe: 1999", R.drawable.warframe_cover));
-        //games.add(new Game("Hollow Knight", R.drawable.hollow_knight_cover));
-        // games.add(new Game("Elden Ring", R.drawable.elden_ring_cover));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 

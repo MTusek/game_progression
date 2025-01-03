@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-
     <TextView
         android:id="@+id/titleProfile"
         android:layout_width="wrap_content"

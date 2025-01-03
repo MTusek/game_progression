@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">GameProgression</string>
     <string name="game_cover">GameCover</string>
+    <string-array name="categories">
+        <item>Achievements</item>
+        <item>Progress</item>
+        <item>Diary</item>
+        <item>Other</item>
+    </string-array>
 </resources>

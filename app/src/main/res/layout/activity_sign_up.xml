@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
-
     <TextView
         android:id="@+id/titleSignUp"
         android:layout_width="wrap_content"

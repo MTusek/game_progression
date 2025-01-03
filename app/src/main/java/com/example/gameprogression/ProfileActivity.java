@@ -18,9 +18,16 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText usernameInput;
     private Button updateUsernameButton, logoutButton;
     private Switch darkThemeToggle;
+    private SharedPreferences preferences; // Declare globally
+    private boolean isRestarting = false;  // Prevent redundant restarts
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        preferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        applySavedTheme();
+
         setContentView(R.layout.activity_profile);
 
         usernameInput = findViewById(R.id.usernameInput);
@@ -42,23 +49,20 @@ public class ProfileActivity extends AppCompatActivity {
             }
             return false;
         });
+
         if (this instanceof ProfileActivity) {
             bottomNavigationView.setSelectedItemId(R.id.nav_profile);
         }
-        //Theme toggle
-        SharedPreferences preferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+
+        //Darkmode
         boolean isDarkTheme = preferences.getBoolean("DarkTheme", false);
         darkThemeToggle.setChecked(isDarkTheme);
 
         darkThemeToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("DarkTheme", isChecked);
-            editor.apply();
-
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            if (!isRestarting) {
+                isRestarting = true;
+                saveThemePreference(isChecked);
+                applyTheme(isChecked);
             }
         });
 
@@ -75,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Logout
+        //Logout button
         logoutButton.setOnClickListener(v -> {
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
@@ -86,5 +90,33 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
             Toast.makeText(ProfileActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
         });
+    }
+    private void applySavedTheme() {
+        boolean isDarkTheme = preferences.getBoolean("DarkTheme", false);
+        AppCompatDelegate.setDefaultNightMode(isDarkTheme ?
+                AppCompatDelegate.MODE_NIGHT_YES :
+                AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
+    private void saveThemePreference(boolean isDarkTheme) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("DarkTheme", isDarkTheme);
+        editor.apply();
+    }
+
+    private void applyTheme(boolean isDarkTheme) {
+        AppCompatDelegate.setDefaultNightMode(isDarkTheme ?
+                AppCompatDelegate.MODE_NIGHT_NO:
+                AppCompatDelegate.MODE_NIGHT_YES);
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isRestarting = false;
     }
 }
