@@ -19,6 +19,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
 
-    <!-- Add RecyclerView for Notes here -->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

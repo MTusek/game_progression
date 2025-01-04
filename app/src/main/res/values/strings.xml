@@ -7,4 +7,8 @@
         <item>Diary</item>
         <item>Other</item>
     </string-array>
+    <string-array name="sort_options">
+        <item>Alphabetical (A-Z)</item>
+        <item>Reverse Alphabetical (Z-A)</item>
+    </string-array>
 </resources>

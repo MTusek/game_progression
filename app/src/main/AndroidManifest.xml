@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GameProgression"
         tools:targetApi="34">
         <activity
+            android:name=".AddGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder> {
 
-    private final List<Game> games;
+    private List<Game> games;
     private final OnGameClickListener listener;
 
     public interface OnGameClickListener {
@@ -59,4 +59,9 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
             itemView.setOnClickListener(v -> listener.onGameClick(game));
         }
     }
+    public void updateGames(List<Game> updatedGames) {
+        this.games = updatedGames;
+        notifyDataSetChanged();
+    }
+
 }
