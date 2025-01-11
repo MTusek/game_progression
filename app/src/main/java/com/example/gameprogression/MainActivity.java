@@ -49,21 +49,21 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize games list
         games = new ArrayList<>();
-        games.add(new Game("Terraria", R.drawable.terraria2_cover, true));
-        games.add(new Game("Minecraft", R.drawable.minecraft_cover_copy, true));
-        games.add(new Game("Simple MMO", R.drawable.smmo_cover, true));
-        games.add(new Game("Warframe: 1999", R.drawable.warframe_cover, true));
-        games.add(new Game("Hollow Knight", R.drawable.hollow_knight_cover, false));
-        games.add(new Game("Cuphead", R.drawable.cuphead_icon, true));
-        games.add(new Game("Rocket League", R.drawable.rl_cover, false));
-        games.add(new Game("Stardew Valley", R.drawable.stardew_cover, false));
-        games.add(new Game("Cyberpunk 2077", R.drawable.cyberpunk_icon, false));
-        games.add(new Game("Elden Ring", R.drawable.elden_ring_cover, false));
-        games.add(new Game("Grand Theft Auto V - (GTAV)", R.drawable.gta_cover, false));
-        games.add(new Game("Project Zomboid", R.drawable.project_zomboid_cover, true));
-        games.add(new Game("Hitman", R.drawable.hitman_cover, false));
-        games.add(new Game("Brawlhalla", R.drawable.brawlhalla_cover, true));
-        games.add(new Game("Valorant", R.drawable.valorant_cover, false));
+        games.add(new Game("Terraria", "Dig, fight and explore", R.drawable.terraria2_cover, true));
+        games.add(new Game("Minecraft", "Build, mine and survive", R.drawable.minecraft_cover_copy, true));
+        games.add(new Game("Simple MMO", "It's that simple?", R.drawable.smmo_cover, true));
+        games.add(new Game("Warframe: 1999", "Enter futuristic world of Warframes", R.drawable.warframe_cover, true));
+        games.add(new Game("Hollow Knight", "Explore twisting caverns and battle bizarre bugs", R.drawable.hollow_knight_cover, false));
+        games.add(new Game("Cuphead", "Don't deal with the devil", R.drawable.cuphead_icon, true));
+        games.add(new Game("Rocket League", "Soccer with cars", R.drawable.rl_cover, false));
+        games.add(new Game("Stardew Valley", "Farming simulator", R.drawable.stardew_cover, false));
+        games.add(new Game("Cyberpunk 2077", "Futuristic city", R.drawable.cyberpunk_icon, false));
+        games.add(new Game("Elden Ring", "Elden Ring is an open world game with a stamina based combat system, which involves weapons and magic", R.drawable.elden_ring_cover, false));
+        games.add(new Game("Grand Theft Auto V - (GTAV)", "Perform heist in an open world", R.drawable.gta_cover, false));
+        games.add(new Game("Project Zomboid", "Survive against hordes of zombies as long as possible", R.drawable.project_zomboid_cover, true));
+        games.add(new Game("Hitman", "The world of assassination awaits you", R.drawable.hitman_cover, false));
+        games.add(new Game("Brawlhalla", "Fight for fame and glory in the lands of Valhalla", R.drawable.brawlhalla_cover, true));
+        games.add(new Game("Valorant", "Kill opponents to complete mission objectives.", R.drawable.valorant_cover, false));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, GameDetailsActivity.class);
             intent.putExtra("gameName", game.getName());
             intent.putExtra("gameCover", game.getCover());
+            intent.putExtra("gameDescription", game.getDescription());
             startActivity(intent);
         });
         recyclerView.setAdapter(adapter);

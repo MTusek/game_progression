@@ -24,6 +24,7 @@ public class GameDetailsActivity extends AppCompatActivity {
 
         String gameName = getIntent().getStringExtra("gameName");
         int gameCover = getIntent().getIntExtra("gameCover", R.drawable.placeholder);
+        String gameDescription = getIntent().getStringExtra("gameDescription");
 
         TextView gameTitle = findViewById(R.id.gameTitle);
         ImageView gameCoverImage = findViewById(R.id.gameCover);
@@ -31,9 +32,11 @@ public class GameDetailsActivity extends AppCompatActivity {
         EditText userNotes = findViewById(R.id.userNotes);
         Button saveButton = findViewById(R.id.saveButton);
         Button backButton = findViewById(R.id.backButton);
+        TextView descriptionTextView = findViewById(R.id.gameDescription);
 
         gameTitle.setText(gameName);
         gameCoverImage.setImageResource(gameCover);
+        descriptionTextView.setText(gameDescription);
 
         //Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

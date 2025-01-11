@@ -43,6 +43,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
         holder.gameTitle.setText(game.getName());
         holder.gameCover.setImageResource(game.getCover());
+        holder.gameDescription.setText(game.getDescription());
 
         // Update favorite icon
         holder.favoriteIcon.setImageResource(
@@ -72,11 +73,13 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         TextView gameTitle;
         ImageView gameCover;
         ImageView favoriteIcon;
+        TextView gameDescription;
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
             gameTitle = itemView.findViewById(R.id.gameTitle);
             gameCover = itemView.findViewById(R.id.gameCover);
             favoriteIcon = itemView.findViewById(R.id.favoriteIcon);
+            gameDescription = itemView.findViewById(R.id.gameDescription);
         }
     }
 }

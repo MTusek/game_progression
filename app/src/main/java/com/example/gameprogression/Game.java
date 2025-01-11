@@ -4,8 +4,11 @@ public class Game {
     private int cover;
     private boolean isFavorite;
 
-    public Game(String name, int cover, boolean isFavorite) {
+    private String description;
+
+    public Game(String name, String description, int cover, boolean isFavorite) {
         this.name = name;
+        this.description = description;
         this.cover = cover;
         this.isFavorite = isFavorite;
     }
@@ -21,6 +24,14 @@ public class Game {
     public void setCover(int cover) {
         this.cover = cover;
     }
+
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     public boolean isFavorite() {
         return isFavorite;
